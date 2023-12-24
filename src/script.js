@@ -86,19 +86,19 @@ function animateJump() {
 	const ANDROID_DURATION = 500;
 	const ANDROID_JUMP_START_TIME = Date.now();
 
-	function jumpAnimation() {
+	function updateAndroidPosition() {
 	  	const progress = (Date.now() - ANDROID_JUMP_START_TIME) / ANDROID_DURATION;
 
 	  	if (progress < 1) {
 			android.position.y = android.userData.startY + ANDROID_JUMP_HEIGHT * Math.sin(progress * Math.PI);
 
-			requestAnimationFrame(jumpAnimation);
+			requestAnimationFrame(updateAndroidPosition);
 	  	} else {
 			android.position.y = android.userData.startY;
 	  	}
 	}
 
-	jumpAnimation();
+	updateAndroidPosition();
 }
 
   // обработчик клика для анимации статуэтки
